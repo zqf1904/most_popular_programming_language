@@ -1,20 +1,34 @@
 {
-  "name": "pets-of-nyc",
-  "version": "0.0.1",
-  "private": true,
-  "scripts": {
-    "start": "node ./bin/www"
-  },
+  "name": "best_language_web_app",
+  "version": "1.0.0",
+  "description": "A single web application showing which programming language is best one to start learning today. Data is based on GitHub and Stackoverflow APIs.",
+  "main": "app.js",
   "dependencies": {
-    "body-parser": "~1.13.2",
-    "cookie-parser": "~1.3.5",
-    "debug": "~2.2.0",
-    "express": "~4.13.1",
-    "geocoder": "^0.2.2",    
-    "hogan-express": "^0.5.2",
-    "mongoose": "^4.1.10",
-    "morgan": "~1.6.1",
-    "node-env-file": "^0.1.7",
-    "serve-favicon": "~2.3.0"
-  }
+    "ejs": "^2.5.1",
+    "express": "^4.14.0",
+    "morgan": "^1.7.0",
+    "request": "^2.74.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dodiku/best_language_web_app.git"
+  },
+  "keywords": [
+    "javascript",
+    "d3",
+    "api",
+    "github",
+    "stackoverflow",
+    "programming"
+  ],
+  "author": "dodiku (Dror Ayalon)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dodiku/best_language_web_app/issues"
+  },
+  "homepage": "https://github.com/dodiku/best_language_web_app#readme"
 }
