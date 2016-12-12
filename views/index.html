@@ -34,7 +34,10 @@
         <!-- START LINE CHART SECTION -->
         <div class="col-md-12">
           <h4>How the popularity of programming language changes since 2010</h4>
-
+          <div class="buttonsection">
+            <button class="btn btn-info btn-sm" type="button" id="percent">Percentage</button>
+            <button class="btn btn-info btn-sm" type="button" id="repos">Repositories</button>
+          </div>
           <canvas id="lineChart"></canvas>
         </div>
         <!-- END LINE CHART SECTION -->
@@ -47,56 +50,56 @@
           <h4>What's the most popular programming language last month?<span id="update-date"></span></h4>
           <span id="rending"; style="opacity:0.4;font-size:14px;font-weight:700">Getting fresh and shinny informaion...</br>Worth the wait...</span>  
           <div id="doughnutSection">
-          <div class="stats-holder">
-            JavaScript
-            <br>
-            <span id="jsCount"></span> 
-          </div>
-          <div class="stats-holder">
-            Java
-            <br>
-            <span id="javaCount"></span> 
-          </div>
-          <div class="stats-holder">
-            Python
-            <br>
-            <span id="pythonCount"></span> 
-          </div>
-          <div class="stats-holder">
-            PHP
-            <br>
-            <span id="phpCount"></span> 
-          </div>
-          <div class="stats-holder">
-            Ruby
-            <br>
-            <span id="rubyCount"></span> 
-          </div>
-          <div class="stats-holder">
-            C++
-            <br>
-            <span id="ccCount"></span> 
-          </div>
-          <div class="stats-holder">
-            C
-            <br>
-            <span id="cCount"></span> 
-          </div>
-          <div class="stats-holder">
-            Shell
-            <br>
-            <span id="shellCount"></span> 
-          </div>
-          <div class="stats-holder">
-            Objective-C
-            <br>
-            <span id="objCount"></span> 
-          </div>
-          <div class="stats-holder">
-            Go
-            <br>
-            <span id="goCount"></span> 
-          </div>
+            <div class="stats-holder">
+              Go
+              <br>
+              <span id="goCount"></span> 
+            </div>
+            <div class="stats-holder">
+              C
+              <br>
+              <span id="cCount"></span> 
+            </div>
+            <div class="stats-holder">
+              C++
+              <br>
+              <span id="ccCount"></span> 
+            </div>            
+            <div class="stats-holder">
+              Objective-C
+              <br>
+              <span id="objCount"></span> 
+            </div>
+            <div class="stats-holder">
+              PHP
+              <br>
+              <span id="phpCount"></span> 
+            </div>            
+            <div class="stats-holder">
+              Python
+              <br>
+              <span id="pythonCount"></span> 
+            </div>
+            <div class="stats-holder">
+              Ruby
+              <br>
+              <span id="rubyCount"></span> 
+            </div>            
+            <div class="stats-holder">
+              Java
+              <br>
+              <span id="javaCount"></span> 
+            </div>                                 
+            <div class="stats-holder">
+              JavaScript
+              <br>
+              <span id="jsCount"></span> 
+            </div>
+            <div class="stats-holder">
+              Shell
+              <br>
+              <span id="shellCount"></span> 
+            </div>
           </div>                
           <div class="clear-fix"></div>
           <div class="doughnutChartHolder">

@@ -1,3 +1,6 @@
+//set global variable
+var lineChartType = 1;
+
 //sort the LineDate by date
 function compareForSort(a,b){
   if (a.date == b.date)
@@ -37,13 +40,13 @@ function buildDoughnutChart(data){
   // 2. options - chart options (optional)
 
   var data = {
-      labels: ["Go","Objective-C","Shell","C","C++",
-               "Ruby","PHP","Python","Java","JavaScript"],
+      labels: ["Go","C","C++","Objective-C","PHP",
+               "Python","Ruby","Java","JavaScript","Shell"],
       datasets: [{
-        data: [data.Go, data.Obj, data.Shell, data.C, data.CC,
-                 data.Ruby, data.PHP, data.Python, data.Java, data.JavaScript],
-        backgroundColor:["#FF3333", "#B96163", "#3355FF", "#FF9633", "#FF33FF",
-                         "#7A33FF", "#33FF86", "#33DDFF", "#FFE933","#B8FF33"]
+        data: [data.Go, data.C, data.CC, data.Obj, data.PHP,
+               data.Python, data.Ruby, data.Java, data.JavaScript,data.Shell],
+        backgroundColor:["#FF3333", "#FF9633", "#FF33FF","#B96163", "#33FF86", 
+                         "#33DDFF", "#7A33FF",  "#FFE933","#B8FF33","#3355FF"]
         }]
   };
 
@@ -252,9 +255,6 @@ function buildLineChart(data){
     scales: {
             yAxes: [{
               stacked: true,
-              ticks:{
-                max: 100,
-              },
             }]
           },
     legend: {
@@ -310,6 +310,31 @@ function formatDataForLineChart(data){
   buildLineChart(lineData);
 }
 
+function formatDataForLineChart2(data) {
+  var lineData = [];
+  for (j = 0; j< data.length; j++){
+    var firstData = data[j].doc;
+    var realData = firstData.data;
+    var secondData ={};
+    secondData["date"] = firstData.update_date.substring(0,7);
+    for (i=0; i< realData.length; i++){
+      var name = realData[i].name;
+      if (name == "C++"){
+        secondData["CC"]=realData[i].repos;
+      }
+      else if (name == "Objective-C"){
+        secondData["Obj"]=realData[i].repos;
+      }
+      else{
+        secondData[name] = realData[i].repos;
+      }
+    }
+    lineData.push(secondData);
+  }
+  lineData = lineData.sort(compareForSort);
+  buildLineChart(lineData);
+}
+
 function formatDataForDoughnut(data){
   var doughnutData = {};
   for (j = 0; j<data.length; j++){
@@ -349,7 +374,7 @@ function getLastMonthData(){
   }); 
 }
 
-function getCloudantData(){
+function getCloudantData(num){
   $.ajax({
     url: '/api/all',
     type:'GET',
@@ -359,13 +384,24 @@ function getCloudantData(){
       console.log(err);
     },
     success: function(data){
-      formatDataForLineChart(data.rows);
+      if (num === 1){
+        formatDataForLineChart(data.rows);
+      }
+      else{
+        formatDataForLineChart2(data.rows);
+      }
     }
   });
 }
 
 $(document).ready(function(){
-  getCloudantData();
+  getCloudantData(lineChartType);
   getLastMonthData();
+  $("#percent").on("click",function(){
+    getCloudantData(lineChartType);
+  });
+  $("#repos").on("click",function(){
+    getCloudantData(0);
+  })
 });
   
