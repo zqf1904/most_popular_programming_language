@@ -26,10 +26,10 @@ var dataArray = {
 var languageName = ["JavaScript","Ruby","Python","C%2B%2B","Java","PHP","Go",
                     "C","Objective-C","Shell"];
 
-var cloudant_USER = 'zqf1904';
-var cloudant_DB = 'trend_lan';
-var cloudant_KEY = 'toolventywaseelyncermdly';
-var cloudant_PASSWORD = '9648f5b29f93098cbd00917dec69356101b62016';
+var cloudant_USER = '****';
+var cloudant_DB = '****';
+var cloudant_KEY = '****';
+var cloudant_PASSWORD = '****';
 
 var cloudant_URL = "https://" + cloudant_USER + ".cloudant.com/" + cloudant_DB;
 
