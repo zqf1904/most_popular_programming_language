@@ -23,7 +23,7 @@ h4{
 .heading-holder{
     padding: 0 0 10px 0px;
     max-width: 715px;
-    margin: 45px 0px 20px;
+    margin: 45px 0px 0px;
     border-bottom: 1px solid #cdcdcd;
 }
 
@@ -65,4 +65,9 @@ canvas{
 
 .buttonsection{
   margin-bottom: 15px;
+}
+
+.json{
+  text-indent: 30px;
+  color: grey;
 }

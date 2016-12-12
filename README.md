@@ -1,1 +1,1 @@
-Nothing yet
+This App selects 10 programming language, and shows how many repositories are created in each language on GitHub.

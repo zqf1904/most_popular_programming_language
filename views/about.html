@@ -15,7 +15,6 @@
     <!-- Custom CSS inside CSS folder -->
     <link rel="stylesheet" href="style.css">
 
-
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -27,11 +26,48 @@
     <div class="container">
       <div class="heading-holder">
         <h1>About</h1>
-        <p> This is the about page for the app "Most Popular Programming Languages". Click <a href="/">here</a> to go back to the app.</p>
+        <p>This is the about page for the app "Most Popular Programming Languages". Click <a href="/">here</a> to go back to the app.</p>
       </div>
       <!-- ROW 1-->
-      <div class="col-md-8">  
-        <p>This App selects 10 programming language, and shows how many repositories are created in each language on GitHub. For more info, click <a href="/about">here</a>.</p>  
+      <div class="col-md-8">
+        <h3>Idea</h3>
+        <p>For most people, coding is a skill not easy to start learning. The first problem they may face is to select a programming language. A good reference could be the popularity of different languages. I don’t mean that the most used language is the best, but it can be a relatively easy start for beginner.</p>
+        <p>This single web app is going to serve this reference. By tracking the numbers of newly created repositories of 10 selected languages on GitHub, it shows the popularity in last month and the trending in past 7 years. The HTML and CSS are excluded.</p>
+        <p>About the method of selecting these 10 languages, I selected 3 dates (starting date, mid date, end date) and got the 15 most created programming languages in each, then comparing them to result a final list of 10.</p>
+        <p>And it is pretty interesting to see the trend that while Ruby is shrinking, Java keeps growing.</p>
+        <h3>Data</h3>
+        <p>The data is collected by calling <a href="https://developer.github.com/v3/search/">GitHub search API</a>.</p>
+        <p>For trending part, I searched the repositories created for each language per 3 months, restructured and combined the returning data. Jan 2010 to April 2010 is the first 3 months, and the last one only has 2 month and 10 days (Oct 2016 to Dec 10th 2016). The dataset has 28 items. It was manually collected for each because the limitation of GitHub API. The data are saved on the <a href="https://cloudant.com/">Cloudant</a>.</p>
+        <p>The dataset is looking like this:</p>
+        <span class = "json">   
+        <p>["update_date": "2015-04-01..2015-07-01",</p>
+        <p>&nbsp"data": [</p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{"name": "Java",</p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"repos": 184745,</p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"repos_percent": 25},</p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{"name": "JavaScript",</p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"repos": 179096,</p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"repos_percent": 24},</p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp...]</p>
+        <p>]</p>
+        </span>
+        <p>And you can access the 3-monthly data in last 7 years’ data by clicking <a href="/api/all">this</a>.</p>
+        <p>For the last month data, it is lively collected from GitHub. The dataset structures the same as the trending one. Also due to the Github API limitation, it may take some more time to load the data.</p>
+        <p>And you can access the last month’s data by clicking <a href="/lastmonth">this</a>. It may take some time calling the API.</p>
+        <h3>Design</h3>
+        <p>I use the <a href="http://www.chartjs.org">Chart.js</a> to visualize the data, based on a <a href="https://github.com/sslover/designing-for-data-personalization/tree/master/week4/chart-example">template</a>.</p>
+        <p>The design is simple and neat. I want to clearly present the date with an intuitive feeling.</p>
+        <p>For trending part, I used stacked line chart to display the data, making sure each language has its own area. Both the percentage and absolute number are presented for the trending part.</p>
+        <p>I make the color scale wide to better differentiate the 10 languages. Consistency is considered to make the charts more readable.
+        </p>
+        <h3>Difficulty</h3>
+        <p>There are two main difficulties during my development in this app.</p>
+        <p>Firstly, I was tracing 10 different languages at the same time. A Promise function was introduced to realize it, which took my a very long time to figure out the best progress. And the limitation of GitHub API made it even harder for me to test solutions.</p>
+        <p>Secondly, when using Chart.js to draw the 2 trending line area chart, I re-drew the latter chart by replacing the previous one on a same canvas at first, and encountered a bug: when hovering the re-drew chart, the previous one might flash back constantly. I solved this issue by setting up 2 canvases instead with each line chart drawn on each canvas.</p>
+        <p>Secondly, when using Chart.js to draw the 2 trending line area chart, I re-drew the latter chart by replacing the previous one on a same canvas at first, and encountered a bug: when hovering the re-drew chart, the previous one might flash back constantly. I solved this issue by setting up 2 canvases instead with each line chart drawn on each canvas.</p>
+        <hr>
+        <p>Here is the GitHub <a href="https://github.com/zqf1904/most_popular_programming_language">link</a> for this project.</p>
+        <p>This project is inspired by <a href="http://www.drorayalon.com/">Dror Ayalon</a>.</p> 
       </div>
     </div> 
   </body>
