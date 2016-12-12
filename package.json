@@ -1,7 +1,7 @@
 {
-  "name": "best_language_web_app",
+  "name": "most_popular_programming_language",
   "version": "1.0.0",
-  "description": "A single web application showing which programming language is best one to start learning today. Data is based on GitHub and Stackoverflow APIs.",
+  "description": "A single web application showing which the popularity of programming languages. Data is based on GitHub API.",
   "main": "app.js",
   "dependencies": {
     "ejs": "^2.5.1",
@@ -15,20 +15,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dodiku/best_language_web_app.git"
+    "url": "git+https://github.com/zqf1904/most_popular_programming_language.git"
   },
   "keywords": [
     "javascript",
-    "d3",
+    "chartjs",
     "api",
     "github",
-    "stackoverflow",
-    "programming"
+    "programming",
+    "node.js"
   ],
-  "author": "dodiku (Dror Ayalon)",
+  "author": "zqf1904 (Qifan Zhang)",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/dodiku/best_language_web_app/issues"
-  },
-  "homepage": "https://github.com/dodiku/best_language_web_app#readme"
+  "homepage": "https://github.com/dodiku/zqf1904/most_popular_programming_language"
 }
