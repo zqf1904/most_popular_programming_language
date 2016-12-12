@@ -270,19 +270,35 @@ function buildLineChart(data){
     },
   } 
 
-  // NOW, we actually create the chart
-  // first, get the context of the canvas where we're drawing the chart
-  var ctx = document.getElementById("lineChart").getContext("2d");
-  
-  // now, create the line chart, passing in:
-  // 1. the type (required)
-  // 2. the data (required)
-  // 3. chart options (optional)
-  var myLineChart = new Chart(ctx, {
-      type: 'line',
-      data: data,
-      options: options
-  });
+  if(lineChartType ===1 ){
+    //clear the another canvas
+    $("#lineChart2").remove();
+    $(".lineChartHolder").append('<canvas id="lineChart2"></canvas>');
+
+    // NOW, we actually create the chart
+    // first, get the context of the canvas where we're drawing the chart
+    var ctx = document.getElementById("lineChart").getContext("2d");
+
+    // now, create the line chart, passing in:
+    // 1. the type (required)
+    // 2. the data (required)
+    // 3. chart options (optional)
+    var myLineChart = new Chart(ctx, {
+        type: 'line',
+        data: data,
+        options: options
+    });
+  }
+  else{
+    $("#lineChart").remove();
+    $(".lineChartHolder").append('<canvas id="lineChart"></canvas>');
+    var ctx = document.getElementById("lineChart2").getContext("2d");
+    var myLineChart = new Chart(ctx, {
+        type: 'line',
+        data: data,
+        options: options
+    });
+  }
 }
 
 function formatDataForLineChart(data){
@@ -398,10 +414,12 @@ $(document).ready(function(){
   getCloudantData(lineChartType);
   getLastMonthData();
   $("#percent").on("click",function(){
+    lineChartType = 1;
     getCloudantData(lineChartType);
   });
   $("#repos").on("click",function(){
-    getCloudantData(0);
+    lineChartType = 0;
+    getCloudantData(lineChartType);
   })
 });
   
